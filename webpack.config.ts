@@ -23,7 +23,7 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'tetris',
+      title: 'Tetris!',
       template: 'index.html'
     }),
     new webpack.HotModuleReplacementPlugin()
