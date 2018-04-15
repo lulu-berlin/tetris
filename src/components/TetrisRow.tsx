@@ -5,8 +5,8 @@ export type TetrisRowProps = {
 };
 
 export const TetrisRow: React.SFC<TetrisRowProps> = ({row}) => (
-  <span>
-  {row.map(cell => cell ? '\u25A1' : '\u00a0')}
-  <br/>
-  </span>
+  <>
+    {row.map(cell => cell ? '\u25A1' : '\u00a0')}
+    <br/>
+  </>
 );

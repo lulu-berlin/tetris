@@ -7,7 +7,5 @@ export type PlaygroundProps = {
 };
 
 export const Playground: React.SFC<PlaygroundProps> = ({matrix}) => (
-  <span>
-  {matrix.map(row => <TetrisRow row={row}/>)}
-  </span>
+  <>{matrix.map(row => <TetrisRow row={row}/>)}</>
 );
