@@ -1,27 +1,32 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import path = require('path');
+import webpack = require('webpack');
+import HtmlWebpackPlugin = require('html-webpack-plugin');
+import CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const DIST = path.resolve(__dirname, 'dist');
 
-const config: webpack.Configuration = {
+const config = (
+  env: any,
+  {mode}: webpack.Configuration
+): webpack.Configuration => ({
   entry: [
     './src/index.tsx'
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name]-[hash].bundle.js',
     path: DIST,
     publicPath: '/'
   },
-  devtool: 'source-map',
   devServer: {
     contentBase: DIST
   },
+  ...(mode === 'development' && {devtool: 'source-map'}),
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
   plugins: [
+    new CleanWebpackPlugin([DIST]),
     new HtmlWebpackPlugin({
       title: 'Tetris!',
       template: 'index.html'
@@ -36,6 +41,6 @@ const config: webpack.Configuration = {
       }
     ]
   }
-};
+});
 
 export default config;
