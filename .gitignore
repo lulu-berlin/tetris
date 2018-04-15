@@ -56,3 +56,10 @@ typings/
 
 # dotenv environment variables file
 .env
+dist/
+
+# VIM
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
